@@ -25,5 +25,8 @@ class InitializationCommand extends HyperfCommand
     public function handle()
     {
         $this->call('gen:auth-env');
+        $this->info('执行代码迁移');
+        $this->call('migrate');
+        $this->call('create:user:info:data');
     }
 }

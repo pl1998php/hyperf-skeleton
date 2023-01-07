@@ -5,6 +5,9 @@ declare(strict_types=1);
 
 namespace App\Enum;
 
+/**
+ * HTTP状态码枚举
+ */
 enum HttpCodeEnum
 {
     /**

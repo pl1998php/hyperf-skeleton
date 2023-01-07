@@ -46,7 +46,7 @@ trait Response
             'message' => $message,
             'data' => $data ?? ['t' => time()],
             'time' => time()
-        ])->withStatus(HttpCodeEnum::SERVER_ERROR);
+        ])->withStatus(HttpCodeEnum::HTTP_OK);
     }
 
 }

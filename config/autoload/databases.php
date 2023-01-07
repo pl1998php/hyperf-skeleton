@@ -1,6 +1,8 @@
 <?php
 
 declare(strict_types=1);
+
+use App\Enum\DatabaseEnum;
 /**
  * This file is part of Hyperf.
  *
@@ -10,7 +12,7 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 return [
-    'admin' => [
+    DatabaseEnum::ADMIN_CONNECTION => [
         'driver' => env('DB_DRIVER', 'mysql'),
         'host' => env('DB_ADMIN_HOST', 'localhost'),
         'port' => env('DB_ADMIN_PORT', 3306),
@@ -31,14 +33,14 @@ return [
         'cache' => [
             'handler' => Hyperf\ModelCache\Handler\RedisHandler::class,
             'cache_key' => '{mc:%s:m:%s}:%s:%s',
-            'prefix' => 'default',
+            'prefix' => 'admin',
             'ttl' => 3600 * 24,
             'empty_model_ttl' => 600,
             'load_script' => true,
         ],
         'commands' => [
             'gen:model' => [
-                'path' => 'app/Model',
+                'path' => 'app/Model/Admin',
                 'force_casts' => true,
                 'inheritance' => 'Model',
                 'uses' => '',
@@ -46,7 +48,7 @@ return [
             ],
         ],
     ],
-    'shop' => [
+    DatabaseEnum::SHOP_CONNECTION => [
         'driver' => env('DB_DRIVER', 'mysql'),
         'host' => env('DB_SHOP_HOST', 'localhost'),
         'port' => env('DB_SHOP_PORT', 3306),
@@ -67,14 +69,14 @@ return [
         'cache' => [
             'handler' => Hyperf\ModelCache\Handler\RedisHandler::class,
             'cache_key' => '{mc:%s:m:%s}:%s:%s',
-            'prefix' => 'default',
+            'prefix' => 'shop',
             'ttl' => 3600 * 24,
             'empty_model_ttl' => 600,
             'load_script' => true,
         ],
         'commands' => [
             'gen:model' => [
-                'path' => 'app/Model',
+                'path' => 'app/Model/Shop',
                 'force_casts' => true,
                 'inheritance' => 'Model',
                 'uses' => '',

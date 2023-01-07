@@ -17,6 +17,10 @@ return [
         'guard' => 'jwt',
         'provider' => 'users',
     ],
+    'shop' => [
+        'guard' => 'jwt',
+        'provider' => 'users',
+    ],
     'guards' => [
         'sso' => [
             // 支持的设备，env配置时用英文逗号隔开
@@ -175,7 +179,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => \Qbhy\HyperfAuth\Provider\EloquentProvider::class,
-            'model' => App\Model\Shop\UserModel::class, // 需要实现 Qbhy\HyperfAuth\Authenticatable 接口
+            'model' => App\Model\Shop\Users::class, // 需要实现 Qbhy\HyperfAuth\Authenticatable 接口
         ],
     ],
 ];
