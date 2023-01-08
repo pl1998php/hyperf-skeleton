@@ -27,7 +27,7 @@ trait Response
         return $this->response->json([
             'code' => $code,
             'message' => $message,
-            'data' => $data ?? ['t' => time()],
+            'data' => $data ?: ['serve' => 'api' ],
             'time' => time()
         ])->withStatus(HttpCodeEnum::HTTP_OK);
     }
@@ -44,7 +44,7 @@ trait Response
         return $this->response->json([
             'code' => $code,
             'message' => $message,
-            'data' => $data ?? ['t' => time()],
+            'data' => $data ?: ['serve' => 'api' ],
             'time' => time()
         ])->withStatus(HttpCodeEnum::HTTP_OK);
     }

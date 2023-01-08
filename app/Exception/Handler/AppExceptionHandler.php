@@ -11,15 +11,17 @@ declare(strict_types=1);
  */
 namespace App\Exception\Handler;
 
-use App\Trains\Response;
+use App\Enum\HttpCodeEnum;
+use App\Trains\ResponseHandler;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\ExceptionHandler\ExceptionHandler;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
+use  Hyperf\HttpMessage\Exception\NotFoundHttpException;
 
 class AppExceptionHandler extends ExceptionHandler
 {
-    use Response;
+   use ResponseHandler;
 
     public function __construct(protected StdoutLoggerInterface $logger)
     {
@@ -31,9 +33,19 @@ class AppExceptionHandler extends ExceptionHandler
         $this->logger->error(sprintf('%s[%s] in %s', $throwable->getMessage(), $throwable->getLine(), $throwable->getFile()));
         $this->logger->error($throwable->getTraceAsString());
 
-        return $this->fail('Internal Server HttpCodeEnum.')
-            ->withHeader('Server', 'Hyperf');
+       if($throwable instanceof NotFoundHttpException ) {
+           return $response->withBody($this->getSwooleStream(HttpCodeEnum::NOT_FOUND,'路由不存在'));
+       } else {
+           return $response->withBody($this->getSwooleStream(HttpCodeEnum::SERVER_ERROR,'服务异常'),[
+               'line'    => $throwable->getLine(),
+               'file'    => $throwable->getFile(),
+               'message' => $throwable->getMessage(),
+           ]);
+       }
     }
+
+
+
 
     public function isValid(Throwable $throwable): bool
     {

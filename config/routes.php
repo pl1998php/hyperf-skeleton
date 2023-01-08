@@ -10,7 +10,7 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 use Hyperf\HttpServer\Router\Router;
-use App\Controller\Api\V1 as ApiV1;
+//use App\Controller\Api\V1 as ApiV1;
 
 Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
 
@@ -20,6 +20,6 @@ Router::get('/favicon.ico', function () {
 
 //Router::addGroup('api',function (){
 //    Router::addGroup('v1',function (){
-//        Router::post('/auth/login',[ApiV1\Auth\AuthController::class,'login']);
+//        Router::post('/auth/login',[ApiV1\AuthController::class,'login']);
 //    });
 //});
