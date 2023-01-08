@@ -1,12 +1,18 @@
 <?php
 
 declare(strict_types=1);
-
-
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://hyperf.wiki
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
 namespace App\Enum;
 
 /**
- * HTTP状态码枚举
+ * HTTP状态码枚举.
  */
 enum HttpCodeEnum
 {
@@ -123,6 +129,4 @@ enum HttpCodeEnum
      * 服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理
      */
     public const SERVER_ERROR = 500;
-
-
 }

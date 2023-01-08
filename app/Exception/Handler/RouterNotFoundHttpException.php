@@ -1,11 +1,20 @@
 <?php
 
+declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://hyperf.wiki
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
 namespace App\Exception\Handler;
 
 use App\Enum\HttpCodeEnum;
+use App\Trains\ResponseHandler;
 use Hyperf\HttpMessage\Exception\NotFoundHttpException;
 use Hyperf\HttpMessage\Server\Response;
-use App\Trains\ResponseHandler;
 
 class RouterNotFoundHttpException extends NotFoundHttpException
 {
@@ -18,8 +27,8 @@ class RouterNotFoundHttpException extends NotFoundHttpException
     {
         $message = Response::getReasonPhraseByCode($this->statusCode);
         if (! $message) {
-            $message =  'Error';
+            $message = 'Error';
         }
-        return $this->getJson(HttpCodeEnum::SERVER_ERROR,$message);
+        return $this->getJson(HttpCodeEnum::SERVER_ERROR, $message);
     }
 }

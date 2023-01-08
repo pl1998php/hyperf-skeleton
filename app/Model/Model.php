@@ -19,5 +19,6 @@ use Hyperf\ModelCache\CacheableInterface;
 abstract class Model extends BaseModel implements CacheableInterface
 {
     use Cacheable;
+
     protected ?string $connection = DatabaseEnum::SHOP_CONNECTION;
 }

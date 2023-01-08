@@ -11,10 +11,10 @@ declare(strict_types=1);
  */
 namespace App\Listener;
 
+use App\Event\Event;
 use Hyperf\AsyncQueue\AnnotationJob;
 use Hyperf\AsyncQueue\Event\AfterHandle;
 use Hyperf\AsyncQueue\Event\BeforeHandle;
-use App\Event\Event;
 use Hyperf\AsyncQueue\Event\FailedHandle;
 use Hyperf\AsyncQueue\Event\RetryHandle;
 use Hyperf\Event\Annotation\Listener;

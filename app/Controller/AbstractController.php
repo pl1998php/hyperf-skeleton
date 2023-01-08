@@ -16,7 +16,6 @@ use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 use Psr\Container\ContainerInterface;
 
-
 abstract class AbstractController
 {
     #[Inject]

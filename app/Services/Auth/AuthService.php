@@ -1,33 +1,36 @@
 <?php
 
 declare(strict_types=1);
-
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://hyperf.wiki
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ */
 namespace App\Services\Auth;
 
 use App\Enum\UserEnum;
 use App\Model\Shop\Users;
 
-
 class AuthService
 {
     use AuthTrains;
 
-    /** @var string  */
+    /** @var string */
     public $guard = UserEnum::API_JWT;
 
-
     /**
-     * @param array $params
-     * @return array|\Exception
      * @throws \Exception
      */
-    public function login(array $params) :array | \Exception
+    public function login(array $params): array|\Exception
     {
-        $users = Users::where('phone',$params['phone'])->first();
-        if(!$users) {
+        $users = Users::where('phone', $params['phone'])->first();
+        if (! $users) {
             throw new \Exception('用户不存在');
         }
-        if(!password_verify($params['password'],$users->password)) {
+        if (! password_verify($params['password'], $users->password)) {
             throw new \Exception('密码错误');
         }
         return $this->getData($users);
@@ -42,8 +45,6 @@ class AuthService
     public function getUser()
     {
         $user = $this->auth->guard($this->guard)->user();
-        return  $this->getData($user);
+        return $this->getData($user);
     }
-
-
 }

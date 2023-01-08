@@ -10,3 +10,14 @@ cp .env.example .env && php bin/hyperf.php init:application
 ```shell
 php bin/hyperf.php server:watch
 ```
+* 代码格安装
+```shell
+
+mkdir --parents tools/php-cs-fixer
+composer require --working-dir=tools/php-cs-fixer friendsofphp/php-cs-fixer
+
+```
+* 代码格式化
+```shell
+tools/php-cs-fixer/vendor/bin/php-cs-fixer fix app
+```
