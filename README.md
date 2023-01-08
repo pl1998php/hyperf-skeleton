@@ -1,4 +1,4 @@
-# Hyperf3.0 Api脚本架示例
+# Hyperf3.0 Api脚手架示例
 
  * 初始化应用
 ```shell
@@ -10,7 +10,7 @@ cp .env.example .env && php bin/hyperf.php init:application
 ```shell
 php bin/hyperf.php server:watch
 ```
-* 代码格安装
+* `php-cs-fixer` 安装
 ```shell
 
 mkdir --parents tools/php-cs-fixer
